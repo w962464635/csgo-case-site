@@ -1,0 +1,208 @@
+:root {
+    --bg: #0a0a0f;
+    --panel: #12121a;
+    --border: #1e1e2e;
+    --gold: #f0c040;
+    --red: #ff4444;
+    --pink: #e060ff;
+    --purple: #8855ff;
+    --blue: #4488ff;
+    --light-blue: #66aadd;
+    --text: #b0b0c0;
+    --accent: #ff6600;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    background: var(--bg);
+    background-image: radial-gradient(ellipse at 50% 0%, rgba(240,192,64,0.03) 0%, transparent 70%), radial-gradient(ellipse at 80% 20%, rgba(136,85,255,0.02) 0%, transparent 60%);
+    color: var(--text);
+    min-height: 100vh;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 30px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+.nav-left .logo { font-size: 1.4em; font-weight: 900; color: var(--accent); letter-spacing: 2px; }
+.nav-left .logo-text { font-size: 0.8em; color: #666; margin-left: 8px; letter-spacing: 1px; }
+.nav-right { display: flex; align-items: center; gap: 20px; }
+.nav-right a { color: #808090; text-decoration: none; font-size: 0.9em; cursor: pointer; }
+.nav-right a:hover { color: #fff; }
+.balance-display { color: var(--gold); font-weight: 700; font-size: 0.95em; }
+.user-display { color: #888; font-size: 0.85em; }
+.btn-logout { background: none; border: 1px solid #333; color: #888; padding: 4px 12px; border-radius: 3px; cursor: pointer; font-size: 0.8em; }
+
+.modal {
+    display: flex;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.8);
+    z-index: 200;
+    justify-content: center;
+    align-items: center;
+}
+.modal-content {
+    background: var(--panel);
+    padding: 30px 35px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    width: 350px;
+    text-align: center;
+}
+.modal-content h2 { margin-bottom: 20px; color: #ddd; }
+.modal-content input {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 12px;
+    background: #0a0a0f;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: #ddd;
+    font-size: 0.95em;
+    outline: none;
+}
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background: linear-gradient(180deg, #ff7700, #e05500);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.switch-auth { margin-top: 15px; font-size: 0.85em; color: #777; }
+.switch-auth a { color: var(--accent); text-decoration: none; }
+.warning { margin-top: 10px; font-size: 0.75em; color: #555; }
+
+.main-container { max-width: 800px; margin: 30px auto; padding: 0 20px; }
+.page { display: none; }
+.page.active { display: block; }
+
+.case-container { text-align: center; }
+.case-container h1 { font-size: 1.6em; margin-bottom: 5px; color: #ddd; }
+.case-selector { display: flex; justify-content: center; gap: 10px; margin-bottom: 20px; }
+.case-btn {
+    padding: 8px 20px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: #888;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.case-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(255,102,0,0.1); }
+
+.scroll-window {
+    position: relative;
+    height: 80px;
+    background: #050508;
+    border: 2px solid var(--border);
+    border-radius: 4px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+.highlight-line {
+    position: absolute;
+    left: 0; right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 60px;
+    background: linear-gradient(90deg, transparent, rgba(240,192,64,0.1) 30%, rgba(255,255,255,0.08) 50%, rgba(240,192,64,0.1) 70%, transparent);
+    border-top: 2px solid rgba(240,192,64,0.5);
+    border-bottom: 2px solid rgba(240,192,64,0.5);
+    z-index: 5;
+    pointer-events: none;
+}
+.scroll-track { display: flex; align-items: center; height: 100%; white-space: nowrap; padding: 8px 0; }
+.weapon-card {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+    padding: 4px 8px;
+    margin: 0 6px;
+    border-radius: 4px;
+    opacity: 0.4;
+    filter: blur(0.5px);
+    flex-shrink: 0;
+}
+.weapon-card.active {
+    不透明度：1;
+    filter: blur(0);
+    transform: scale(1.2);
+    背景: RGBA(30,30,50,0.8);
+    边境: 1PX 固体 RGBA(240,192,64,0.3);
+    box-shadow: 0 0 20PX RGBA(240,192,64,0.2);
+    Z指数: 6;
+}
+.weapon-emoji { 字体大小: 1.8他们; }
+.weapon-name { 字体大小: 0.65他们; 字体粗细: 600; overflow: hidden; text-overflow: ellipsis; max-width: 110PX; white-space: nowrap; }
+
+.rarity-gold { color: #FFD700; }
+.rarity-red { color: #FF4444; }
+.rarity-pink { color: #FF66FF; }
+.rarity-purple { color: #9966FF; }
+.rarity-blue { color: #4488FF; }
+.rarity-light-blue { color: #66AADD; }
+
+.result-area { min-height: 50PX; margin-bottom: 15PX; 显示: 弯曲; justify-content: center; align-items: center; }
+.result-item {
+    padding: 12PX 24PX;
+    边界半径: 6PX;
+    字体粗细: 700;
+    字体大小: 1.15他们;
+    动画: popIn 0.5s ease;
+}
+@keyframesPopin{
+    0% { 改变: 规模(0.3); 不透明度: 0; }
+    70% { 改变: 规模(1.1); }
+    100% { 改变: 规模(1); 不透明度: 1; }
+}
+.结果-金{ 背景: RGBA(255,215,0,0.2); 边境：2PX 固体#FFD700；color：#FFD700；}
+.Result-红色{ 背景: RGBA(255,68,68,0.2); 边境：2PX 固体#FF4444；color：#FF4444；}
+.结果-粉红色{ 背景: RGBA(255,102,255,0.2); 边境: 2PX 固体#FF66FF；color：#FF66FF；}
+.Result-紫色{ 背景: RGBA(153,102,255,0.2); 边境: 2PX 固体#9966FF；color：#9966FF；}
+.结果-蓝色{ 背景: RGBA(68,136,255,0.15); 边境: 2PX 固体#4488FF；color：#4488FF；}
+.结果-浅蓝色{ 背景: RGBA(102,170,221,0.15); 边境: 2PX 固体#66AADD；color：#66AADD；}
+
+.btn-打开{
+    padding: 14PX 50PX;
+    背景: 线性梯度(180deg，#e05500，#b04400);
+    边境: 没有一个;
+颜色：#FFF；
+    字体大小：1.1他们;
+字体粗细：700;
+    字体大小: 6PX;
+    光标: 指针;
+}
+.btn-open：禁止使用{ 不透明度: 0.4; 光标: 不允许; }
+
+.inventory-grid{ 显示: 网格; 网格模板列: 重复(自动填充, minmax(140PX，1fr)); 差距: 12PX; }
+.库存-项目{ 背景: var(--面板); 边境: 1PX 固体 var(--边界); 边界半径: 6PX; padding: 15PX; text-align: center; }
+
+.history-list{ 显示: 弯曲; 挠曲方向: 柱; 差距: 8PX; }
+.历史-项目{ 显示: 弯曲; justify-content: 间距; align-items: center; padding: 10PX 15PX; 背景: var(--面板); 边界半径: 4PX; 边境: 1PX 固体 var(--边界); }
+
+.金闪{
+    位置: 确定的;
+    顶端: 0; 左: 0; 正确的: 0; 底部: 0;
+    背景: 径向梯度(圆, RGBA(255,215,0,0.3) 0%, 透明的 70%);
+    指针事件: 没有一个;
+    Z指数: 500;
+    动画: 闪光 1s 缓出 向前;
+    显示: 没有一个;
+}
+@keyframes闪光{
+    0% { 不透明度: 1; }
+    100% { 不透明度: 0; }
+}
