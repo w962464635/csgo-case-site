@@ -1,0 +1,68 @@
+<！doctype 超文本标记语言>
+<超文本标记语言 朗="zh-CN">
+<头>
+    <元 字符集="UTF-8">
+    <元 姓名="视口" 内容="宽度=设备宽度，初始比例=1.0">
+    <标题>5F军需模拟器</标题>
+    <链接 rel="样式表" href="style.css">
+</头>
+<身体>
+    <NAV 班级="导航栏">
+        <div 班级="左导航">
+            <跨度 班级="徽标">5F</跨度>
+            <跨度 班级="徽标-文本">军需模拟器</跨度>
+        </div>
+        <div 班级="右导航" 身份标识="navRight">
+            <一个 href="#" onClick="showpage('case')">开箱</一个>
+            <一个 href="#" onClick="showpage('库存')">库存</一个>
+            <一个 href="#" onClick="showpage('历史记录')">记录</一个>
+            <跨度 班级="平衡显示" 身份标识="余额显示">余额: $0</跨度>
+            <跨度 班级="用户显示" 身份标识="userDisplay"></跨度>
+            <按钮 班级="btn注销" 身份标识="btnLogout" onClick="logout()" style="display:none;">退出</按钮>
+</div>
+    </NAV>
+
+    <div 班级="模态" 身份标识="authModal">
+        <div 班级="模态内容">
+            <H2 身份标识="authTitle">登录</H2>
+            <输入 类型="文本" 身份标识="用户名" 占位符="用户名">
+            <输入 类型="密码" 身份标识="密码" 占位符="密码">
+            <按钮 班级="btn-primary" 身份标识="btnAuth" onClick="handleAuth()">登录</按钮>
+            <p 班级="switch-auth">
+                <跨度 身份标识="switchText">没有账号？</跨度>
+                <一个 href="#" 身份标识="switchLink" onClick="toggleAuth()">立即注册</一个>
+            </p>
+            <p 班级="警告">请勿轻信其他人，防止上当受骗</p>
+</div>
+</div>
+
+    <div 班级="主容器">
+        <div 班级="页面激活" 身份标识="page-case">
+            <div 班级="包装箱">
+                <H1>🎁 武器箱开箱</H1>
+                <div 班级="大小写选择器">
+                    <按钮 班级="case-btn激活" 数据-案例="standard">标准箱 ($20)</按钮>
+                    <按钮 班级="case-btn" 数据-案例="premium">高级箱($50)</按钮>
+                </div>
+                <div 班级="滚动窗口" 身份标识="scrollWindow">
+                    <div 班级="突出显示线"></div>
+                    <div 班级="滚动记录" 身份标识="scrollTrack"></div>
+                </div>
+                <div 班级="结果区域" 身份标识="resultArea"></div>
+                <按钮 班级="btn-open" 身份标识="btn打开" onclick="openCase()">🔑 使用钥匙开启</按钮>
+            </div>
+        </div>
+        <div 班级="页面" 身份标识="页面库存">
+            <H2>📦 我的库存</H2>
+            <div 班级="库存-网格" 身份标识="InventoryGrid"></div>
+        </div>
+        <div 班级="页面" 身份标识="页面历史">
+            <H2>📋   开箱记录</H2>
+            <div 班级="历史记录列表" 身份标识="historyList"></div>
+        </div>
+    </div>
+
+    <div 班级="金闪" 身份标识="goldFlash"></div>
+    <脚本 src="script.js"></脚本>
+</身体>
+</超文本标记语言>
