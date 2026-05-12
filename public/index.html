@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5F军需模拟器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <span class="logo">5F</span>
+            <span class="logo-text">军需SIMULATOR</span>
+        </div>
+        <div class="nav-right" id="navRight">
+            <a href="#" onclick="showPage('case')">开箱</a>
+            <a href="#" onclick="showPage('inventory')">库存</a>
+            <a href="#" onclick="showPage('history')">记录</a>
+            <span class="balance-display" id="balanceDisplay">余额: $0</span>
+            <span class="user-display" id="userDisplay"></span>
+            <button class="btn-logout" id="btnLogout" onclick="logout()" style="display:none;">退出</button>
+        </div>
+    </nav>
+
+    <div class="modal" id="authModal">
+        <div class="modal-content">
+            <h2 id="authTitle">登录</h2>
+            <input type="text" id="username" placeholder="用户名">
+            <input type="password" id="password" placeholder="密码">
+            <button class="btn-primary" id="btnAuth" onclick="handleAuth()">登录</button>
+            <p class="switch-auth">
+                <span id="switchText">没有账号？</span>
+                <a href="#" id="switchLink" onclick="toggleAuth()">立即注册</a>
+            </p>
+            <p class="warning">请勿轻信其他人，防止上当受骗</p>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="page active" id="page-case">
+            <div class="case-container">
+                <h1>🎁 武器箱开箱</h1>
+                <div 班级="大小写选择器">
+                    <按钮 班级="case-btn激活" 数据-案例="standard">标准箱 ($20)</按钮>
+                    <按钮 班级="case-btn" 数据-案例="premium">高级箱($50)</按钮>
+                </div>
+                <div 班级="滚动窗口" 身份标识="scrollWindow">
+                    <div 班级="突出显示线"></div>
+                    <div 班级="滚动记录" 身份标识="scrollTrack"></div>
+                </div>
+                <div 班级="结果区域" 身份标识="resultArea"></div>
+                <按钮 班级="btn-open" 身份标识="btn打开" onclick="openCase()">🔑 使用钥匙开启</按钮>
+            </div>
+        </div>
+        <div 班级="页面" 身份标识="页面库存">
+            <H2>📦 我的库存</H2>
+            <div 班级="库存-网格" 身份标识="InventoryGrid"></div>
+        </div>
+        <div 班级="页面" 身份标识="页面历史">
+            <H2>📋   开箱记录</H2>
+            <div 班级="历史记录列表" 身份标识="historyList"></div>
+        </div>
+    </div>
+
+    <div 班级="金闪" 身份标识="goldFlash"></div>
+    <脚本 src="script.js"></脚本>
+</身体>
+</超文本标记语言>
