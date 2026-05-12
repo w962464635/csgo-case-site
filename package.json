@@ -1,1 +1,16 @@
-
+{
+  "名称"："csgo-case-simulator",
+  "版本": "1.0.0",
+  "描述"：CS2"开箱模拟器",
+  "主要": "server.js",
+  "脚本": {
+    "开始": "node server.js"
+  },
+  "依存关系": {
+    "快速": "^4.18.2",
+    "better-sqlite3": "^9.4.3",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2",
+    "Cors": "^2.8.5"
+  }
+}
